@@ -1,0 +1,86 @@
+---
+layout: default
+---
+<article class="post-detail" style="background: var(--bg-secondary); padding: 2.5rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); box-shadow: var(--card-shadow);">
+    
+    <header class="post-header" style="margin-bottom: 2.5rem;">
+        <h1 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.3;">{{ page.title }}</h1>
+        <div class="post-meta" style="color: var(--text-muted); font-size: 0.95rem; display: flex; gap: 1.5rem; align-items: center;">
+            <span><i class="fa-regular fa-calendar"></i> {{ page.date | date: "%B %-d, %Y" }}</span>
+            {% if page.categories.size > 0 %}
+            <span><i class="fa-solid fa-folder-open"></i> {{ page.categories | join: ", " }}</span>
+            {% endif %}
+            {% if page.tags.size > 0 %}
+            <span><i class="fa-solid fa-tags"></i> {{ page.tags | join: ", " }}</span>
+            {% endif %}
+        </div>
+    </header>
+    
+    {% if page.cover_image %}
+    <div class="post-cover" style="margin-bottom: 2.5rem; border-radius: 12px; overflow: hidden; max-height: 450px;">
+        <img src="{{ page.cover_image | relative_url }}" alt="Cover Image" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+    {% endif %}
+
+    <!-- Nội dung chính của bài viết -->
+    <div class="post-content-body" style="color: var(--text-primary); line-height: 1.8; font-size: 1.05rem;">
+        {{ content }}
+    </div>
+    
+    <!-- Phân cách phần bình luận -->
+    <hr style="margin: 4rem 0 2rem; border: none; border-top: 1px solid var(--border-color);">
+    
+    <!-- Vùng chứa bình luận (Comments) -->
+    <div id="comments">
+        <!-- CHÚ Ý: Dán mã nhúng script của Giscus vào ngay dưới dòng này -->
+        <p style="text-align: center; color: var(--text-muted); font-style: italic;">Phần bình luận Giscus sẽ hiển thị ở đây.</p>
+    </div>
+
+</article>
+
+<!-- ==============================================
+    CÁC SCRIPT HỖ TRỢ (MathJax & Mermaid) 
+=============================================== -->
+
+<!-- 1. MathJax: Dùng để render công thức Toán học (LaTeX) -->
+<!-- Cách dùng: Gõ $công_thức$ cho inline, hoặc $$công_thức$$ cho một khối. -->
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- 2. Mermaid.js: Dùng để vẽ biểu đồ từ Markdown -->
+<!-- Cách dùng: Bọc code trong khối markdown với ngôn ngữ là 'mermaid' -->
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        // Jekyll thường parse thẻ ```mermaid thành <code class="language-mermaid">
+        // Ta cần chuyển nó thành <div class="mermaid"> để thư viện nhận diện
+        const mermaidBlocks = document.querySelectorAll('code.language-mermaid');
+        mermaidBlocks.forEach((block) => {
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('mermaid');
+            newDiv.textContent = block.textContent;
+            // Thay thế cả thẻ <pre> bọc ngoài nó
+            const preElement = block.parentElement;
+            if(preElement.tagName === 'PRE') {
+                preElement.replaceWith(newDiv);
+            } else {
+                block.replaceWith(newDiv);
+            }
+        });
+
+        // Khởi tạo Mermaid
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: currentTheme === 'dark' ? 'dark' : 'default'
+        });
+    });
+</script>

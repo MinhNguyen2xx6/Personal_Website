@@ -1,0 +1,25 @@
+<aside class="sidebar-right">
+    <!-- Recently Updated Widget -->
+    <div class="widget">
+        <h3 class="widget-title">Recently Updated</h3>
+        <ul class="recent-list">
+            {% for post in site.posts limit:5 %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+            {% else %}
+            <li style="color: var(--text-secondary);">No recent updates.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Trending Tags Widget -->
+    <div class="widget">
+        <h3 class="widget-title">Trending Tags</h3>
+        <div class="tags-cloud">
+            {% for tag in site.tags limit:10 %}
+            <a href="#" class="tag-pill">{{ tag[0] | downcase }}</a>
+            {% else %}
+            <span style="color: var(--text-secondary); font-size: 0.9rem;">No tags found.</span>
+            {% endfor %}
+        </div>
+    </div>
+</aside>

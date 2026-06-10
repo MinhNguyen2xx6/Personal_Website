@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        {% include sidebar_left.html %}
+
+        <!-- Main Content and Right Sidebar Wrapper -->
+        <div class="main-wrapper">
+            
+            <!-- Main Content Area -->
+            {{ content }}
+
+            <!-- Right Sidebar -->
+            {% include sidebar_right.html %}
+            
+        </div>
+    </div>
+
+    <script src="{{ '/js/main.js' | relative_url }}"></script>
+</body>
+</html>

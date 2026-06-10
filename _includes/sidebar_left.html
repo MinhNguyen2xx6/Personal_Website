@@ -1,0 +1,39 @@
+<aside class="sidebar-left">
+    <div class="profile-section">
+        <div class="avatar" style="background-color: #a5d6f4;">
+            <img src="{{ '/images/avatar.jpg' | relative_url }}" alt="Avatar">
+        </div>
+        <h1 class="profile-name">MinhNG</h1>
+        <p class="profile-bio">Personal website for blogging and showcasing projects.</p>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item">
+            <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}"><i class="fa-solid fa-house"></i> Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#"><i class="fa-solid fa-list"></i> Categories</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ '/projects.html' | relative_url }}" class="{% if page.url == '/projects.html' %}active{% endif %}"><i class="fa-solid fa-layer-group"></i> Projects</a>
+        </li>
+        <li class="nav-item">
+            <a href="#"><i class="fa-solid fa-tags"></i> Tags</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ '/blog.html' | relative_url }}" class="{% if page.url == '/blog.html' %}active{% endif %}"><i class="fa-solid fa-box-archive"></i> Archives</a>
+        </li>
+        <li class="nav-item">
+            <a href="#"><i class="fa-solid fa-circle-info"></i> About</a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <a href="https://github.com/MinhNguyen2xx6" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/minh-nguy%E1%BB%85n-48990939b/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+</aside>

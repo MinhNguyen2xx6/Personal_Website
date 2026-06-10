@@ -1,0 +1,39 @@
+---
+layout: default
+title: Home
+---
+<main class="main-content">
+    <div class="top-bar">
+        <div class="page-title">Home</div>
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search...">
+        </div>
+    </div>
+
+    <div class="post-list">
+        {% for post in site.posts limit:4 %}
+        <article class="post-card">
+            <div class="post-content">
+                <div>
+                    <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                </div>
+                <div class="post-meta">
+                    <span><i class="fa-regular fa-calendar"></i> {{ post.date | date: "%b %d, %Y" }}</span>
+                    {% if post.categories.size > 0 %}
+                    <span><i class="fa-solid fa-folder-open"></i> {{ post.categories | join: ", " }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% if post.cover_image %}
+            <div class="post-image">
+                <img src="{{ post.cover_image | relative_url }}" alt="{{ post.title }} thumbnail">
+            </div>
+            {% endif %}
+        </article>
+        {% else %}
+        <p style="color: var(--text-secondary);">Welcome! Please create some Markdown files in the _posts directory to see them appear here.</p>
+        {% endfor %}
+    </div>
+</main>
