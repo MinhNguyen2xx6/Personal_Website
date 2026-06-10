@@ -1,4 +1,4 @@
 title: Minh's Personal Website
 description: Personal website for blogging and showcasing projects.
-baseurl: "/Personal_Website"
+baseurl: "/Personal_Website" # the subpath of your site, e.g. /blog
 url: "https://minhnguyen2xx6.github.io" # the base hostname & protocol for your site
