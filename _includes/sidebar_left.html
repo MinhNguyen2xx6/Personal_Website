@@ -12,19 +12,19 @@
             <a href="{{ site.baseurl }}/" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}"><i class="fa-solid fa-house"></i> Home</a>
         </li>
         <li class="nav-item">
-            <a href="#"><i class="fa-solid fa-list"></i> Categories</a>
+            <a href="{{ site.baseurl }}/categories" class="{% if page.url contains '/categories' %}active{% endif %}"><i class="fa-solid fa-list"></i> Categories</a>
         </li>
         <li class="nav-item">
             <a href="{{ site.baseurl }}/projects.html" class="{% if page.url == '/projects.html' %}active{% endif %}"><i class="fa-solid fa-layer-group"></i> Projects</a>
         </li>
         <li class="nav-item">
-            <a href="#"><i class="fa-solid fa-tags"></i> Tags</a>
+            <a href="{{ site.baseurl }}/tags" class="{% if page.url contains '/tags' %}active{% endif %}"><i class="fa-solid fa-tags"></i> Tags</a>
         </li>
         <li class="nav-item">
             <a href="{{ site.baseurl }}/blog.html" class="{% if page.url == '/blog.html' %}active{% endif %}"><i class="fa-solid fa-box-archive"></i> Archives</a>
         </li>
         <li class="nav-item">
-            <a href="#"><i class="fa-solid fa-circle-info"></i> About</a>
+            <a href="{{ site.baseurl }}/about/" class="{% if page.url contains '/about' %}active{% endif %}"><i class="fa-solid fa-circle-info"></i> About</a>
         </li>
     </ul>
 
